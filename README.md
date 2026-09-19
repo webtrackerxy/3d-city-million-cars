@@ -25,7 +25,7 @@ https://github.com/user-attachments/assets/3d848dfa-1190-43e1-b38a-05c0a8d0221b
 | --- | --- |
 | Vehicle assets | Porsche 911 source (653k triangles) → LOD0 146k / LOD1 33k / LOD2 5.4k / LOD3 830 triangles through a repeatable Blender pipeline, quantised + meshopt GLBs, validator, `/lod-test` viewer with labels |
 | Rendering | Structure-of-Arrays vehicle state in shared memory, GPU state-texture interpolation, projected-size LOD buckets with hysteresis and adaptive caps, one instanced draw per bucket and material |
-| Map | MapLibre custom layer with float64 coordinate handling, four cities (Tokyo, London, New York, Hong Kong), vector or satellite basemaps, click to inspect a vehicle (position, speed, LOD, mesh cost, draw calls), selected vehicle highlighted |
+| Map | MapLibre custom layer with float64 coordinate handling, five cities (London, Tokyo, New York, Hong Kong, New Delhi), vector or satellite basemaps, click to inspect a vehicle (position, speed, LOD, mesh cost, draw calls), selected vehicle highlighted |
 | Buildings | 3D Tiles via `3d-tiles-renderer`: PLATEAU (open) for Tokyo, Cesium OSM Buildings via Cesium ion for London, New York and Hong Kong |
 | Traffic | OpenStreetMap road graphs per city, IDM car following, simulation and LOD bucketing in a Web Worker over `SharedArrayBuffer` |
 | Network | FULL / DELTA / VIEWPORT binary frames and JSON, a WebSocket traffic server, frustum-driven viewport subscription, dead reckoning |
@@ -47,7 +47,7 @@ npm run dev          # Vite prints the port (5173 if free); open the URL, the ma
 
 Optional:
 
-- **Cesium ion buildings (London, New York, Hong Kong):** create a free account at
+- **Cesium ion buildings (London, New York, Hong Kong, New Delhi):** create a free account at
   https://ion.cesium.com, copy an access token into `.env` as
   `VITE_CESIUM_ION_TOKEN=...` (template in `.env.example`; `.env` is git-ignored), or pass
   `?ionToken=...` on the URL, then choose "3D Tiles" in the buildings selector (or
@@ -74,7 +74,7 @@ Map parameters (combine freely):
 
 | Parameter | Values | Effect |
 | --- | --- | --- |
-| `city` | `london` (default), `tokyo`, `newyork`, `hongkong` | city origin, roads, tileset |
+| `city` | `london` (default), `tokyo`, `newyork`, `hongkong`, `newdelhi` | city origin, roads, tileset |
 | `vehicles` | `1` to `1000000` | fleet size, capped at what the city's roads hold: London defaults to and allows 1,000,000 on its 20 km network; Tokyo, New York and Hong Kong default to and allow 100,000 on 8 km networks |
 | `basemap` | `vector` (default), `satellite`, `imagery` | OpenFreeMap Liberty vector style; Esri World Imagery with the vector style's labels and road shields composed on top; imagery without labels (OSM building extrusions still available) |
 | `buildings` | `osm` (default), `tiles`, `none` | the basemap's OpenStreetMap extrusions (also on the satellite basemaps); 3D Tiles buildings when the city has a tileset; or no buildings |
@@ -138,7 +138,8 @@ names are `paint`, `window`, `glass`, `chrome`, `dark`, `rubber`, `lights`, `cal
 - Porsche 911 Carrera 4S by Lionsharp Studios, CC BY 4.0 (`assets/source/porsche/LICENSE.md`).
 - Road graphs: © OpenStreetMap contributors, ODbL.
 - Tokyo buildings: PLATEAU (MLIT Japan), CC BY 4.0. London and New York buildings: Cesium
-  OSM Buildings, © OpenStreetMap contributors, via Cesium ion under its terms (also Hong Kong).
+  OSM Buildings, © OpenStreetMap contributors, via Cesium ion under its terms (also Hong Kong
+  and New Delhi).
 - Basemaps: OpenFreeMap / OpenMapTiles; Esri World Imagery under Esri's terms.
 - Terrain: AWS Terrain Tiles (Terrarium), derived from SRTM, NED, GMTED and others; see
   https://github.com/tilezen/joerd/blob/master/docs/attribution.md.
@@ -158,6 +159,6 @@ vercel --prod          # or connect the repository in the Vercel dashboard
 ```
 
 Set `VITE_CESIUM_ION_TOKEN` in the host's environment to enable the Cesium 3D Tiles
-buildings for London, New York and Hong Kong. Without it those cities fall back to
+buildings for London, New York, Hong Kong and New Delhi. Without it those cities fall back to
 OpenStreetMap extrusions, which is the default anyway; Tokyo's PLATEAU tiles need no token.
 

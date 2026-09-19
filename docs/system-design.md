@@ -197,15 +197,15 @@ can. The step allocates nothing.
 
 **Lanes.** OSM describes a two-way road as one line. The graph holds one edge per
 direction, and vehicles on two-way edges are offset 1.75 m to the driving side, left for
-Tokyo, London and Hong Kong and right for New York. The offset is cosmetic; gaps are
+Tokyo, London, Hong Kong and New Delhi and right for New York. The offset is cosmetic; gaps are
 still measured along the edge.
 
 **Fleet size per city.** Road space, not the engine, limits the fleet: a network jams at
 about its directed lane length divided by 6.5 m, a 4.5 m car plus a 2 m gap. Each city
 therefore sets a ceiling and a default count. London's 20 km network has 10,098 km of
 directed lanes, so a million cars average 10 m of lane each, congested but moving; it
-defaults to 1,000,000. The 8 km networks of Tokyo, New York and Hong Kong hold 104,000 to
-316,000 cars before jamming and stay at 100,000.
+defaults to 1,000,000. The 8 km networks of Tokyo, New York, Hong Kong and New Delhi hold
+104,000 to 316,000 cars before jamming and stay at 100,000.
 
 ## 8. Geography: frame, terrain and buildings
 
@@ -226,7 +226,7 @@ DEM height at the origin so both agree.
 
 **Buildings.** Three modes are selectable: OSM extrusions from the vector basemap, the
 default; OGC 3D Tiles; or none. Tokyo uses the open PLATEAU dataset. London, New York and
-Hong Kong use Cesium OSM Buildings, which needs a Cesium ion token supplied at build time. An
+Hong Kong and New Delhi use Cesium OSM Buildings, which needs a Cesium ion token supplied at build time. An
 opacity control fades whichever mode is shown without rebuilding the scene: it sets
 `fill-extrusion-opacity` on the extrusion layers, or switches the tile materials to
 blending, including tiles that stream in later. Vehicles are opaque and drawn first, so
@@ -308,7 +308,7 @@ basemap without any console error.
 | --- | --- |
 | No cross-origin isolation | Simulation and LOD selection run on the main thread. The vehicle layer then costs about 3 ms per frame instead of about 0.2 ms, and the simulation tick runs there too. |
 | Frame time over budget | `AdaptiveLod` scales the LOD caps down until the display rate recovers. |
-| No Cesium ion token | 3D Tiles are unavailable for London, New York and Hong Kong and the toolbar says why. OSM extrusions and Tokyo's tiles are unaffected. |
+| No Cesium ion token | 3D Tiles are unavailable for the Cesium ion cities and the toolbar says why. OSM extrusions and Tokyo's tiles are unaffected. |
 | Elevation tiles fail to load | Terrain is switched off for the session, the error is shown, and roads stay flat. |
 | No road graph for a city | Vehicles fall back to synthetic motion in a square around the origin. |
 | Server feed slows or pauses | With `?predict=1` vehicles dead-reckon from their last heading and speed; otherwise they hold their last reported position. |

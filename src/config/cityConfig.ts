@@ -117,6 +117,31 @@ export const CITIES: Record<string, CityConfig> = {
       errorTarget: 12,
     },
   },
+  newdelhi: {
+    id: "newdelhi",
+    terrain: true,
+    driveOnLeft: true,
+    name: "New Delhi (Connaught Place)",
+    origin: { longitude: 77.2167, latitude: 28.6315 }, // Connaught Place, Rajiv Chowk
+    styleUrl: "https://tiles.openfreemap.org/styles/liberty",
+    view: {
+      zoom: 14.5,
+      pitch: 60,
+      bearing: 20,
+      // Barakhamba Road rather than the circle's central park
+      center: { longitude: 77.2245, latitude: 28.6295 },
+    },
+    trafficAreaMetres: 8000,
+    maxVehicles: 100_000,
+    defaultVehicles: 100_000,
+    tileset: {
+      ion: { assetId: 96188 }, // Cesium OSM Buildings
+      groundHeight: 180, // ≈ 216 m terrain at Connaught Place + EGM96 geoid −35 m; 150 floats, 216 sinks
+      hideBasemapBuildings: true,
+      attribution: "Buildings: Cesium OSM Buildings, © OpenStreetMap contributors",
+      errorTarget: 12,
+    },
+  },
   newyork: {
     id: "newyork",
     terrain: true,
