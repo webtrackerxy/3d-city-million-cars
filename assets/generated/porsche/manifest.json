@@ -1,0 +1,514 @@
+{
+  "vehicle": "porsche-911-carrera-4s",
+  "source": {
+    "file": "assets/source/porsche/source/9e528d02fb594880b6f241f668d63bc0.blend",
+    "triangles": 652778
+  },
+  "convention": {
+    "units": "metres",
+    "up": "+Y",
+    "forward": "+Z",
+    "origin": "ground, wheelbase midpoint",
+    "reference": "docs/coordinates.md"
+  },
+  "normalize": {
+    "_comment": "p' = scale * (p + translate). translate is in source units: wheelbase midpoint to Y=0, tyre bottom to Z=0. Scale anchors the baked body length (7.571 units, boot.010/boot.011) to 4.49 m.",
+    "scale": 0.593,
+    "translate": [
+      0,
+      -0.0165,
+      1.0777
+    ]
+  },
+  "generator": {
+    "script": "scripts/generate-car-lods.py",
+    "config": "scripts/lod-config.json",
+    "blender": "5.2.1 LTS"
+  },
+  "lods": [
+    {
+      "id": 0,
+      "file": "car_lod0.glb",
+      "description": "Close range. Paint panels with one subsurf level less, all trim, decimated wheels. Coat skin removed.",
+      "triangles": 146258,
+      "vertices": 83897,
+      "materials": [
+        "dark",
+        "paint",
+        "window",
+        "chrome",
+        "lights",
+        "glass",
+        "rubber",
+        "calliper",
+        "license"
+      ],
+      "bytes": 4748260,
+      "boundingBox": {
+        "min": [
+          -1.0125,
+          -2.2694,
+          -0.0004
+        ],
+        "max": [
+          1.0125,
+          2.2201,
+          1.2871
+        ]
+      },
+      "targetTriangles": [
+        100000,
+        150000
+      ],
+      "withinTarget": true,
+      "buildSeconds": 1.1,
+      "optimized": {
+        "file": "car_lod0.opt.glb",
+        "bytes": 1095460,
+        "ratio": 0.231,
+        "steps": [
+          "dedup",
+          "prune",
+          "weld",
+          "reorder",
+          "quantize(pos14,norm10)",
+          "meshopt"
+        ]
+      },
+      "validation": {
+        "checkedAt": "2026-09-16T23:30:03.666Z",
+        "raw": {
+          "file": "/Users/user/development/3d-city-million-cars/assets/generated/porsche/car_lod0.glb",
+          "bytes": 4748260,
+          "triangles": 146258,
+          "vertices": 120684,
+          "primitives": 9,
+          "materials": [
+            "dark",
+            "paint",
+            "window",
+            "chrome",
+            "lights",
+            "glass",
+            "rubber",
+            "calliper",
+            "license"
+          ],
+          "textures": 0,
+          "extensionsRequired": [],
+          "dimensions": [
+            2.025,
+            1.287,
+            4.49
+          ],
+          "min": [
+            -1.013,
+            0,
+            -2.22
+          ],
+          "max": [
+            1.013,
+            1.287,
+            2.269
+          ],
+          "issues": [],
+          "warnings": []
+        },
+        "optimized": {
+          "file": "/Users/user/development/3d-city-million-cars/assets/generated/porsche/car_lod0.opt.glb",
+          "bytes": 1095460,
+          "triangles": 146258,
+          "vertices": 103565,
+          "primitives": 9,
+          "materials": [
+            "dark",
+            "paint",
+            "window",
+            "chrome",
+            "lights",
+            "glass",
+            "rubber",
+            "calliper",
+            "license"
+          ],
+          "textures": 0,
+          "extensionsRequired": [
+            "EXT_meshopt_compression",
+            "KHR_mesh_quantization"
+          ],
+          "dimensions": [
+            2.025,
+            1.288,
+            4.49
+          ],
+          "min": [
+            -1.013,
+            0,
+            -2.22
+          ],
+          "max": [
+            1.013,
+            1.287,
+            2.269
+          ],
+          "issues": [],
+          "warnings": []
+        }
+      }
+    },
+    {
+      "id": 1,
+      "file": "car_lod1.glb",
+      "description": "Medium range. Coat skin as the body, glass, extracted side windows and lamps, decimated wheels, mirrors, headlights, underbody.",
+      "triangles": 33052,
+      "vertices": 25442,
+      "materials": [
+        "paint",
+        "dark",
+        "lights",
+        "chrome",
+        "rubber",
+        "window"
+      ],
+      "bytes": 876072,
+      "boundingBox": {
+        "min": [
+          -1.0159,
+          -2.2405,
+          0
+        ],
+        "max": [
+          1.0159,
+          2.2229,
+          1.2904
+        ]
+      },
+      "targetTriangles": [
+        30000,
+        45000
+      ],
+      "withinTarget": true,
+      "buildSeconds": 1.6,
+      "optimized": {
+        "file": "car_lod1.opt.glb",
+        "bytes": 314340,
+        "ratio": 0.359,
+        "steps": [
+          "dedup",
+          "prune",
+          "weld",
+          "reorder",
+          "quantize(pos14,norm10)",
+          "meshopt"
+        ]
+      },
+      "validation": {
+        "checkedAt": "2026-09-16T23:30:03.695Z",
+        "raw": {
+          "file": "/Users/user/development/3d-city-million-cars/assets/generated/porsche/car_lod1.glb",
+          "bytes": 876072,
+          "triangles": 33052,
+          "vertices": 28030,
+          "primitives": 6,
+          "materials": [
+            "paint",
+            "dark",
+            "lights",
+            "chrome",
+            "rubber",
+            "window"
+          ],
+          "textures": 0,
+          "extensionsRequired": [],
+          "dimensions": [
+            2.032,
+            1.29,
+            4.463
+          ],
+          "min": [
+            -1.016,
+            0,
+            -2.223
+          ],
+          "max": [
+            1.016,
+            1.29,
+            2.241
+          ],
+          "issues": [],
+          "warnings": []
+        },
+        "optimized": {
+          "file": "/Users/user/development/3d-city-million-cars/assets/generated/porsche/car_lod1.opt.glb",
+          "bytes": 314340,
+          "triangles": 33052,
+          "vertices": 28030,
+          "primitives": 6,
+          "materials": [
+            "paint",
+            "dark",
+            "lights",
+            "chrome",
+            "rubber",
+            "window"
+          ],
+          "textures": 0,
+          "extensionsRequired": [
+            "EXT_meshopt_compression",
+            "KHR_mesh_quantization"
+          ],
+          "dimensions": [
+            2.032,
+            1.29,
+            4.463
+          ],
+          "min": [
+            -1.016,
+            0,
+            -2.223
+          ],
+          "max": [
+            1.016,
+            1.29,
+            2.241
+          ],
+          "issues": [],
+          "warnings": []
+        }
+      }
+    },
+    {
+      "id": 2,
+      "file": "car_lod2.glb",
+      "description": "Far range. Decimated coat skin, glass, side windows, lamps, headlight lenses, underbody, cylinder wheels with rim caps.",
+      "triangles": 5368,
+      "vertices": 3451,
+      "materials": [
+        "paint",
+        "dark",
+        "lights",
+        "window",
+        "rubber"
+      ],
+      "bytes": 150556,
+      "boundingBox": {
+        "min": [
+          -1.0159,
+          -2.2411,
+          0
+        ],
+        "max": [
+          1.0159,
+          2.2228,
+          1.2915
+        ]
+      },
+      "targetTriangles": [
+        5000,
+        8000
+      ],
+      "withinTarget": true,
+      "buildSeconds": 1.2,
+      "optimized": {
+        "file": "car_lod2.opt.glb",
+        "bytes": 60952,
+        "ratio": 0.405,
+        "steps": [
+          "dedup",
+          "prune",
+          "weld",
+          "reorder",
+          "quantize(pos14,norm10)",
+          "meshopt"
+        ]
+      },
+      "validation": {
+        "checkedAt": "2026-09-16T23:30:03.701Z",
+        "raw": {
+          "file": "/Users/user/development/3d-city-million-cars/assets/generated/porsche/car_lod2.glb",
+          "bytes": 150556,
+          "triangles": 5368,
+          "vertices": 4754,
+          "primitives": 5,
+          "materials": [
+            "paint",
+            "dark",
+            "lights",
+            "window",
+            "rubber"
+          ],
+          "textures": 0,
+          "extensionsRequired": [],
+          "dimensions": [
+            2.032,
+            1.292,
+            4.464
+          ],
+          "min": [
+            -1.016,
+            0,
+            -2.223
+          ],
+          "max": [
+            1.016,
+            1.292,
+            2.241
+          ],
+          "issues": [],
+          "warnings": []
+        },
+        "optimized": {
+          "file": "/Users/user/development/3d-city-million-cars/assets/generated/porsche/car_lod2.opt.glb",
+          "bytes": 60952,
+          "triangles": 5368,
+          "vertices": 4754,
+          "primitives": 5,
+          "materials": [
+            "paint",
+            "dark",
+            "lights",
+            "window",
+            "rubber"
+          ],
+          "textures": 0,
+          "extensionsRequired": [
+            "EXT_meshopt_compression",
+            "KHR_mesh_quantization"
+          ],
+          "dimensions": [
+            2.032,
+            1.292,
+            4.464
+          ],
+          "min": [
+            -1.016,
+            0,
+            -2.223
+          ],
+          "max": [
+            1.016,
+            1.292,
+            2.241
+          ],
+          "issues": [],
+          "warnings": []
+        }
+      }
+    },
+    {
+      "id": 3,
+      "file": "car_lod3.glb",
+      "description": "Very far. Coat skin collapsed in two stages, minimal glass, lamps and underbody, 10-segment cylinder wheels.",
+      "triangles": 830,
+      "vertices": 763,
+      "materials": [
+        "paint",
+        "dark",
+        "lights",
+        "window"
+      ],
+      "bytes": 32928,
+      "boundingBox": {
+        "min": [
+          -1.0165,
+          -2.252,
+          0.0165
+        ],
+        "max": [
+          1.0165,
+          2.196,
+          1.2837
+        ]
+      },
+      "targetTriangles": [
+        400,
+        900
+      ],
+      "withinTarget": true,
+      "buildSeconds": 1.1,
+      "optimized": {
+        "file": "car_lod3.opt.glb",
+        "bytes": 17260,
+        "ratio": 0.524,
+        "steps": [
+          "dedup",
+          "prune",
+          "weld",
+          "reorder",
+          "quantize(pos14,norm10)",
+          "meshopt"
+        ]
+      },
+      "validation": {
+        "checkedAt": "2026-09-16T23:30:03.703Z",
+        "raw": {
+          "file": "/Users/user/development/3d-city-million-cars/assets/generated/porsche/car_lod3.glb",
+          "bytes": 32928,
+          "triangles": 830,
+          "vertices": 1022,
+          "primitives": 4,
+          "materials": [
+            "paint",
+            "dark",
+            "lights",
+            "window"
+          ],
+          "textures": 0,
+          "extensionsRequired": [],
+          "dimensions": [
+            2.033,
+            1.267,
+            4.448
+          ],
+          "min": [
+            -1.017,
+            0.016,
+            -2.196
+          ],
+          "max": [
+            1.017,
+            1.284,
+            2.252
+          ],
+          "issues": [],
+          "warnings": []
+        },
+        "optimized": {
+          "file": "/Users/user/development/3d-city-million-cars/assets/generated/porsche/car_lod3.opt.glb",
+          "bytes": 17260,
+          "triangles": 830,
+          "vertices": 1022,
+          "primitives": 4,
+          "materials": [
+            "paint",
+            "dark",
+            "lights",
+            "window"
+          ],
+          "textures": 0,
+          "extensionsRequired": [
+            "EXT_meshopt_compression",
+            "KHR_mesh_quantization"
+          ],
+          "dimensions": [
+            2.033,
+            1.267,
+            4.448
+          ],
+          "min": [
+            -1.017,
+            0.016,
+            -2.196
+          ],
+          "max": [
+            1.017,
+            1.284,
+            2.252
+          ],
+          "issues": [],
+          "warnings": []
+        }
+      }
+    }
+  ]
+}

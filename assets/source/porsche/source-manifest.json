@@ -1,0 +1,27 @@
+{
+  "vehicle": "porsche-911-carrera-4s",
+  "author": "Lionsharp Studios",
+  "license": "CC-BY-4.0",
+  "sourceUrl": "https://sketchfab.com/3d-models/free-porsche-911-carrera-4s-d01b254483794de3819786d93e0e1ebf",
+  "downloaded": "2026-09-16",
+  "files": {
+    "blend": {
+      "path": "source/9e528d02fb594880b6f241f668d63bc0.blend",
+      "bytes": 18833360,
+      "sha256": "7d81e57db3cfe40c0bbf07d64828d220a961ee7e8c335b550d3b96cff65196ef"
+    },
+    "textures": [
+      { "file": "677a43f68e274010962bb5d4d5b5e1ca.png", "width": 1024, "height": 1024, "bytes": 504317 },
+      { "file": "cc0c064f1d5a40b488c273e823c6950e.png", "width": 1024, "height": 1024, "bytes": 520374 },
+      { "file": "cc3819ca8dde4b94a3a4510926ff7187.png", "width": 1024, "height": 1024, "bytes": 450717 },
+      { "file": "ems.png", "width": 1024, "height": 1024, "bytes": 85136 },
+      { "file": "porsche_logo_PNG1.png", "width": 972, "height": 972, "bytes": 625543 },
+      { "file": "c4d13e1ef5c20e49d7206aefff123f19--no-signa.jpg", "width": 736, "height": 736, "bytes": 309232 },
+      { "file": "2000px-German_license_plate.svg.png", "width": 2000, "height": 455, "bytes": 80262 },
+      { "file": "NormalMap.png", "width": 2000, "height": 455, "bytes": 117187 },
+      { "file": "shadow.png", "width": 2048, "height": 4096, "bytes": 4519704 },
+      { "file": "black.png", "width": 32, "height": 32, "bytes": 167 }
+    ]
+  },
+  "claimedStats": { "triangles": 652800, "vertices": 339300, "note": "from Sketchfab page; verify in Blender analysis" }
+}

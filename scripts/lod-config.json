@@ -1,0 +1,117 @@
+{
+  "_comment": "Configuration for scripts/generate-car-lods.py. Paths are relative to the project root. Units after normalisation are metres; see docs/coordinates.md.",
+  "vehicle": "porsche-911-carrera-4s",
+  "source": "assets/source/porsche/source/9e528d02fb594880b6f241f668d63bc0.blend",
+  "sourceTriangles": 652778,
+  "output": "assets/generated/porsche",
+  "junk": ["Cube", "Cylinder.002", "Sphere", "Plane", "Hemi", "Hemi.001"],
+  "normalize": { "_comment": "p' = scale * (p + translate). translate is in source units: wheelbase midpoint to Y=0, tyre bottom to Z=0. Scale anchors the baked body length (7.571 units, boot.010/boot.011) to 4.49 m.", "scale": 0.593, "translate": [0.0, -0.0165, 1.0777] },
+  "materials": {
+    "paint": { "color": [0.75, 0.75, 0.75], "metallic": 0.2, "roughness": 0.35 },
+    "window": { "color": [0.02, 0.02, 0.03], "metallic": 0.0, "roughness": 0.05 },
+    "glass": { "color": [0.85, 0.9, 0.95], "metallic": 0.0, "roughness": 0.08 },
+    "chrome": { "color": [0.9, 0.9, 0.9], "metallic": 1.0, "roughness": 0.25 },
+    "dark": { "color": [0.02, 0.02, 0.02], "metallic": 0.0, "roughness": 0.8 },
+    "rubber": { "color": [0.015, 0.015, 0.015], "metallic": 0.0, "roughness": 0.9 },
+    "lights": { "color": [1.0, 1.0, 1.0], "metallic": 0.0, "roughness": 0.3, "emission": 0.4 },
+    "calliper": { "color": [0.8, 0.02, 0.02], "metallic": 0.3, "roughness": 0.4 },
+    "license": { "color": [0.9, 0.9, 0.9], "metallic": 0.0, "roughness": 0.5 }
+  },
+  "materialMap": { "_comment": "Source material name -> canonical material. Applied to every LOD before the per-LOD map.", "coat": "paint", "paint": "paint", "window": "window", "glass": "glass", "silver": "chrome", "tex_shiny": "chrome", "logo": "chrome", "plastic": "dark", "full_black": "dark", "Material": "dark", "rubber": "rubber", "Material.001": "calliper", "lights": "lights", "license": "license" },
+  "_extractNote": "The side windows and tail lights are faces inside the LOD0-only paint panels. For LOD1+ they are copied out by material into their own objects before the panels are dropped.",
+  "lods": [
+    {
+      "id": 0,
+      "file": "car_lod0.glb",
+      "targetTriangles": [100000, 150000],
+      "description": "Close range. Paint panels with one subsurf level less, all trim, decimated wheels. Coat skin removed.",
+      "drop": ["boot.011"],
+      "subsurf": { "delta": -1, "min": 1 },
+      "decimate": [
+        { "objects": ["Cylinder.000", "Cylinder.001"], "type": "COLLAPSE", "targetTriangles": 10000, "symmetry": true },
+        { "objects": ["boot.010"], "type": "COLLAPSE", "targetTriangles": 6000, "symmetry": true }
+      ],
+      "weld": 0.0002,
+      "exportUVs": true,
+      "smoothAngle": 35
+    },
+    {
+      "id": 1,
+      "file": "car_lod1.glb",
+      "targetTriangles": [30000, 45000],
+      "description": "Medium range. Coat skin as the body, glass, extracted side windows and lamps, decimated wheels, mirrors, headlights, underbody.",
+      "keep": ["boot.011", "windshield", "window_rear", "Cylinder.000", "Cylinder.001", "Cube.001", "Plane.001", "bumper_front.001", "underbody"],
+      "subsurf": { "max": 0 },
+      "extract": [
+        { "name": "side_glass", "material": "window", "from": ["boot.002", "boot.004", "boot.005", "boot.006"] },
+        { "name": "lamps", "material": "lights", "from": ["boot.002", "boot.004", "boot.005", "boot.006", "bumper_front.004"] }
+      ],
+      "materialMap": { "calliper": "dark", "license": "dark", "glass": "lights" },
+      "decimate": [
+        { "objects": ["boot.011"], "type": "COLLAPSE", "targetTriangles": 21000, "symmetry": true },
+        { "objects": ["Cylinder.000", "Cylinder.001"], "type": "COLLAPSE", "targetTriangles": 4000, "symmetry": true },
+        { "objects": ["Plane.001"], "type": "COLLAPSE", "targetTriangles": 1000, "symmetry": true },
+        { "objects": ["bumper_front.001"], "type": "COLLAPSE", "targetTriangles": 800, "symmetry": true },
+        { "objects": ["Cube.001"], "type": "COLLAPSE", "targetTriangles": 300 },
+        { "objects": ["underbody"], "type": "COLLAPSE", "targetTriangles": 400, "symmetry": true },
+        { "objects": ["side_glass"], "type": "COLLAPSE", "targetTriangles": 600, "symmetry": true },
+        { "objects": ["lamps"], "type": "COLLAPSE", "targetTriangles": 600, "symmetry": true }
+      ],
+      "weld": 0.0005,
+      "exportUVs": false,
+      "smoothAngle": 40
+    },
+    {
+      "id": 2,
+      "file": "car_lod2.glb",
+      "targetTriangles": [5000, 8000],
+      "description": "Far range. Decimated coat skin, glass, side windows, lamps, headlight lenses, underbody, cylinder wheels with rim caps.",
+      "keep": ["boot.011", "windshield", "window_rear", "bumper_front.001", "underbody"],
+      "subsurf": { "max": 0 },
+      "extract": [
+        { "name": "side_glass", "material": "window", "from": ["boot.002", "boot.004", "boot.005", "boot.006"] },
+        { "name": "lamps", "material": "lights", "from": ["boot.002", "boot.004", "boot.005", "boot.006", "bumper_front.004"] }
+      ],
+      "proceduralWheels": { "sourceObjects": ["Cylinder.000", "Cylinder.001"], "segments": 24, "width": 0.28, "material": "rubber", "capMaterial": "dark" },
+      "materialMap": { "chrome": "paint", "glass": "lights" },
+      "decimate": [
+        { "objects": ["boot.011"], "type": "COLLAPSE", "targetTriangles": 4200, "symmetry": true },
+        { "objects": ["windshield", "window_rear"], "type": "COLLAPSE", "targetTriangles": 120, "symmetry": true },
+        { "objects": ["side_glass"], "type": "COLLAPSE", "targetTriangles": 160, "symmetry": true },
+        { "objects": ["lamps"], "type": "COLLAPSE", "targetTriangles": 160, "symmetry": true },
+        { "objects": ["bumper_front.001"], "type": "COLLAPSE", "targetTriangles": 160, "symmetry": true },
+        { "objects": ["underbody"], "type": "COLLAPSE", "targetTriangles": 120, "symmetry": true }
+      ],
+      "weld": 0.001,
+      "exportUVs": false,
+      "smoothAngle": 60
+    },
+    {
+      "id": 3,
+      "file": "car_lod3.glb",
+      "targetTriangles": [400, 900],
+      "description": "Very far. Coat skin collapsed in two stages, minimal glass, lamps and underbody, 10-segment cylinder wheels.",
+      "keep": ["boot.011", "windshield", "window_rear", "bumper_front.001", "underbody"],
+      "subsurf": { "max": 0 },
+      "extract": [
+        { "name": "side_glass", "material": "window", "from": ["boot.002", "boot.004", "boot.005", "boot.006"] },
+        { "name": "lamps", "material": "lights", "from": ["boot.002", "boot.004", "boot.005", "boot.006", "bumper_front.004"] }
+      ],
+      "proceduralWheels": { "sourceObjects": ["Cylinder.000", "Cylinder.001"], "segments": 10, "width": 0.28, "material": "dark", "capMaterial": "dark" },
+      "materialMap": { "chrome": "paint", "glass": "lights" },
+      "decimate": [
+        { "objects": ["boot.011"], "type": "COLLAPSE", "targetTriangles": 6000, "symmetry": true },
+        { "objects": ["boot.011"], "type": "PLANAR", "angle": 6 },
+        { "objects": ["boot.011"], "type": "COLLAPSE", "targetTriangles": 480, "symmetry": true },
+        { "objects": ["windshield", "window_rear"], "type": "COLLAPSE", "targetTriangles": 36, "symmetry": true },
+        { "objects": ["side_glass"], "type": "COLLAPSE", "targetTriangles": 48, "symmetry": true },
+        { "objects": ["lamps"], "type": "COLLAPSE", "targetTriangles": 40, "symmetry": true },
+        { "objects": ["bumper_front.001"], "type": "COLLAPSE", "targetTriangles": 40, "symmetry": true },
+        { "objects": ["underbody"], "type": "COLLAPSE", "targetTriangles": 30, "symmetry": true }
+      ],
+      "weld": 0.002,
+      "exportUVs": false,
+      "smoothAngle": 89
+    }
+  ]
+}

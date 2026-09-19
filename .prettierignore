@@ -1,0 +1,9 @@
+dist
+node_modules
+assets
+docs
+*.md
+index.html
+scripts/lod-config.json
+package-lock.json
+public
