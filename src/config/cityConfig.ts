@@ -61,9 +61,9 @@ export const CITIES: Record<string, CityConfig> = {
       // Hibiya-dori (primary road) rather than the origin, which sits inside Tokyo Station
       center: { longitude: 139.7598, latitude: 35.6793 },
     },
-    trafficAreaMetres: 8000,
-    maxVehicles: 100_000,
-    defaultVehicles: 100_000,
+    trafficAreaMetres: 20000, // 12,000 km of directed lanes: 12 m per car at 1,000,000
+    maxVehicles: 1_000_000,
+    defaultVehicles: 1_000_000,
     tileset: {
       // PLATEAU (MLIT Japan) Chiyoda-ku 2023 building LOD1, textured; experimental streaming service
       url: "https://assets.cms.plateau.reearth.io/assets/0e/e5948a-e95c-4e31-be85-1f8c066ed996/13101_chiyoda-ku_pref_2023_citygml_1_op_bldg_3dtiles_13101_chiyoda-ku_lod1/tileset.json",
@@ -150,9 +150,11 @@ export const CITIES: Record<string, CityConfig> = {
     origin: { longitude: -73.9855, latitude: 40.758 },
     styleUrl: "https://tiles.openfreemap.org/styles/liberty",
     view: { zoom: 14.5, pitch: 60, bearing: 29 },
-    trafficAreaMetres: 8000,
-    maxVehicles: 100_000,
-    defaultVehicles: 100_000,
+    // 26 km, not 20: half a 20 km square around Midtown is water, leaving only 6,500 km of
+    // lanes, which is bumper to bumper at a million. 26 km gives 11,300 km: 11 m per car
+    trafficAreaMetres: 26000,
+    maxVehicles: 1_000_000,
+    defaultVehicles: 1_000_000,
     tileset: {
       ion: { assetId: 96188 }, // Cesium OSM Buildings
       groundHeight: -18, // ≈ EGM96 geoid −32.5 m + ~15 m terrain in Midtown; tune with ?ground=

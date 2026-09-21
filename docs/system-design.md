@@ -202,10 +202,11 @@ still measured along the edge.
 
 **Fleet size per city.** Road space, not the engine, limits the fleet: a network jams at
 about its directed lane length divided by 6.5 m, a 4.5 m car plus a 2 m gap. Each city
-therefore sets a ceiling and a default count. London's 20 km network has 10,098 km of
-directed lanes, so a million cars average 10 m of lane each, congested but moving; it
-defaults to 1,000,000. The 8 km networks of Tokyo, New York, Hong Kong and New Delhi hold
-104,000 to 316,000 cars before jamming and stay at 100,000.
+therefore sets a ceiling and a default count. London (20 km), Tokyo (20 km) and New York
+(26 km) carry 10,100 to 12,000 km of directed lanes, so a million cars average 10 to 12 m
+of lane each, congested but moving, and all three default to 1,000,000. New York needs the
+larger square because half a 20 km one around Midtown is water. The 8 km networks of Hong
+Kong and New Delhi hold 104,000 and 253,000 cars before jamming and stay at 100,000.
 
 ## 8. Geography: frame, terrain and buildings
 

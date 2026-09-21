@@ -32,7 +32,7 @@ https://github.com/user-attachments/assets/3d848dfa-1190-43e1-b38a-05c0a8d0221b
 | Measurement | `/bench` scenarios, a Playwright runner, GPU timer queries |
 
 Headline numbers on an Apple M1 Pro (details in `docs/performance.md`): 1,000,000
-road-following vehicles on London's 20 km road network at 60 FPS, 0.1–0.2 ms of
+road-following vehicles in London, Tokyo or New York at 60 FPS, 0.1–0.2 ms of
 main-thread time per frame for the vehicle layer, 75–79 ms per 100 ms simulation tick in
 the worker. At 100,000 vehicles with 3D Tiles the layer takes 0.2–0.5 ms and the tick
 7–8 ms; the network feed needs 1–12 Mbit/s with viewport subscription at 10 Hz versus
@@ -75,7 +75,7 @@ Map parameters (combine freely):
 | Parameter | Values | Effect |
 | --- | --- | --- |
 | `city` | `london` (default), `tokyo`, `newyork`, `hongkong`, `newdelhi` | city origin, roads, tileset |
-| `vehicles` | `1` to `1000000` | fleet size, capped at what the city's roads hold: London defaults to and allows 1,000,000 on its 20 km network; Tokyo, New York and Hong Kong default to and allow 100,000 on 8 km networks |
+| `vehicles` | `1` to `1000000` | fleet size, capped at what the city's roads hold: London, Tokyo (20 km networks) and New York (26 km) default to and allow 1,000,000; Hong Kong and New Delhi default to and allow 100,000 on 8 km networks |
 | `basemap` | `vector` (default), `satellite`, `imagery` | OpenFreeMap Liberty vector style; Esri World Imagery with the vector style's labels and road shields composed on top; imagery without labels (OSM building extrusions still available) |
 | `buildings` | `osm` (default), `tiles`, `none` | the basemap's OpenStreetMap extrusions (also on the satellite basemaps); 3D Tiles buildings when the city has a tileset; or no buildings |
 | `terrain` | `1` / `0` | drape the basemap over a DEM (AWS Terrarium tiles clamped at sea level, no key) and elevate the road network so vehicles follow the ground and tilt with its slope; on by default in every city (`?terrain=0` turns it off); Hong Kong shows it best |

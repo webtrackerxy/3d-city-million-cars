@@ -266,6 +266,20 @@ period as the 20th percentile of the window's intervals fixed it: caps stay at 1
 minute at 121–127 FPS, and the existing stall tests still shrink them. Reproduce with
 `HEADED=1 node tooling/adaptive-probe.mjs <url> 60`.
 
+**Tokyo and New York at a million (2026-09-21).** Same method, same machine. Tokyo's
+20 km square holds 12,007 km of directed lanes; New York needed 26 km, because half a
+20 km square around Midtown is water and the 6,525 km left is bumper to bumper at a
+million.
+
+| City | Square | Directed lanes | Lane per car at 1 M | Mean speed | Stopped | Worker tick | FPS |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| London | 20 km | 10,098 km | 10.1 m | 7.2 km/h | 29.8 % | 75–79 ms | 60 |
+| Tokyo | 20 km | 12,007 km | 12.0 m | 9.8 km/h | 19.8 % | 76–84 ms | 60 |
+| New York | 26 km | 11,344 km | 11.3 m | 10.4 km/h | 13.5 % | 69–72 ms | 60 |
+
+Main-thread layer time stayed at 0.1–0.2 ms in all three. Road files are 15–17 MB, about
+4 MB compressed, and a city is ready 5–10 s after load on localhost.
+
 The height field for 20 km uses DEM zoom 13 (64 tiles) and a 20 m grid (1001 × 1001),
 chosen automatically so it costs no more than the 8 km field (zoom 15, 144 tiles, 10 m).
 
